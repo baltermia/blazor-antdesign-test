@@ -1,0 +1,33 @@
+﻿<style>
+    .layout {
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+
+    .content-background {
+        background: white;
+    }
+
+    .box-shadow-inner {
+        box-shadow: inset 0 25px 25px -15px #dadada;
+        -webkit-box-shadow: inset 0 25px 25px -15px #dadada;
+    }
+
+    #content {
+        margin: 34px 15% 0 15%;
+        padding: 24px;
+        bottom: 48px;
+    }
+</style>
+
+<Layout class="layout box-shadow-inner">
+    <Content class="content-background" id="content">
+        @ChildContent
+    </Content>
+</Layout>
+
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

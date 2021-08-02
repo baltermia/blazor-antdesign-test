@@ -1,0 +1,18 @@
+﻿@inherits LayoutComponentBase
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #footer {
+        text-align: center;
+        flex-shrink: 0;
+    }
+</style>
+
+<NavMenu />
+<BodyLayout>
+    @Body
+</BodyLayout>
+<Footer id="footer">©2021 <a href="https://github.com/speyck">github.com/speyck</a></Footer>
