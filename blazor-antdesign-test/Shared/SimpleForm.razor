@@ -1,0 +1,38 @@
+﻿<style>
+    .input {
+        width: 150px;
+    }
+
+    /* using a class instead of an id does - for some odd reason - not work here */
+    #divider {
+        margin-top: @DividerTopMargin;
+    }
+</style>
+
+<Divider id="divider" Orientation="left">Input Data</Divider>
+
+<Form Model="@formModel"
+      ValidateMode="@FormValidateMode.Rules"
+      ValidateOnChange="@false"
+      LabelColSpan="2"
+      WrapperColSpan="6"
+      Size="@FormSize">
+
+    <FormItem Label="Machine" Rules="@(machineNrRules)">
+        <Input @bind-Value="@context.MachineNr" />
+    </FormItem>
+
+    <FormItem Label="Name">
+        <Input @bind-Value="@context.Name" />
+    </FormItem>
+
+    <FormItem Label="User">
+        <AutoComplete @bind-Value="@context.User" Options="@userOptions" />
+    </FormItem>
+
+    <FormItem WrapperColOffset="2" WrapperColSpan="6">
+        <Button Type="@ButtonType.Primary" HtmlType="submit">
+            Start
+        </Button>
+    </FormItem>
+</Form>
