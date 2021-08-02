@@ -2,32 +2,35 @@
     .layout {
         flex-grow: 1;
         flex-shrink: 0;
+        margin: @Margin;
     }
 
     .content-background {
         background: white;
     }
 
-    .box-shadow-inner {
-        box-shadow: inset 0 25px 25px -15px #dadada;
-        -webkit-box-shadow: inset 0 25px 25px -15px #dadada;
-    }
-
     #content {
-        margin: 34px 15% 0 15%;
+        margin: 34px 15% 24px 15%;
         padding: 24px;
         bottom: 48px;
     }
+
+    .box-shadow {
+        box-shadow: 0 0 15px #dadada;
+        -webkit-box-shadow: 0 0 15px #dadada;
+    }
 </style>
 
-<Layout class="layout box-shadow-inner">
-    <Content class="content-background" id="content">
+<Layout class="layout">
+    <Content class="content-background box-shadow" id="content">
         @ChildContent
     </Content>
 </Layout>
 
-
 @code {
     [Parameter]
     public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string Margin { get; set; } = "0";
 }

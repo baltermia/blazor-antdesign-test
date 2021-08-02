@@ -1,35 +1,56 @@
 ﻿<style>
-    .menu {
-        padding: 5px 15% 0 15%;
+    #logo {
+        padding: 0 5px 5px 5px;
+        height: 55px;
+        width: auto;
     }
 
     #title {
         font-size: 20px;
     }
+
+    .menu {
+        padding: 5px 15% 0 15%;
+    }
+
+    .bottom-box-shadow {
+        box-shadow: 0 -25px 25px 25px #dadada;
+        -webkit-box-shadow: 0 -25px 25px 25px #dadada;
+    }
+
+    .parent {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9;
+    }
 </style>
 
-<Menu Mode="MenuMode.Horizontal"
-      DefaultOpenKeys=@(new [] {"main"})
-      DefaultSelectedKeys=@(new [] {"main"})
-      class="menu">
+<div class="parent bottom-box-shadow">
+    <Menu Mode="MenuMode.Horizontal"
+          DefaultOpenKeys=@(new [] {"main"})
+          DefaultSelectedKeys=@(new [] {"main"})
+          class="menu">
 
-    <MenuItem Key="main">
-        <NavLink href="">
-            <h1 id="title">Titel</h1>
-        </NavLink>
-    </MenuItem>
+        <MenuItem Key="main">
+            <NavLink href="">
+                <h1 id="title">Placeholder</h1>
+            </NavLink>
+        </MenuItem>
 
-    <MenuItem Key="settings">
-        <NavLink href="settings">
-            <Icon Type="setting" Theme="outline" />
-            Einstellungen
-        </NavLink>
-    </MenuItem>
+        <MenuItem Key="settings">
+            <NavLink href="settings">
+                <Icon Type="setting" Theme="outline" />
+                Settings
+            </NavLink>
+        </MenuItem>
 
-    <MenuItem Key="manual">
-        <NavLink href="manual">
-            <Icon Type="question-circle" Theme="outline" />
-            Anleitung
-        </NavLink>
-    </MenuItem>
-</Menu>
+        <MenuItem Key="manual">
+            <NavLink href="manual">
+                <Icon Type="question-circle" Theme="outline" />
+                Manual
+            </NavLink>
+        </MenuItem>
+    </Menu>
+</div>
