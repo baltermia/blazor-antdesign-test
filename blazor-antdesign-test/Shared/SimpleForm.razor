@@ -16,7 +16,8 @@
       ValidateOnChange="@false"
       LabelColSpan="2"
       WrapperColSpan="6"
-      Size="@FormSize">
+      Size="@FormSize"
+      OnFinish="OnFinish">
 
     <FormItem Label="Machine" Rules="@(machineNrRules)">
         <Input @bind-Value="@context.MachineNr" />
@@ -36,3 +37,8 @@
         </Button>
     </FormItem>
 </Form>
+
+@if (simpleTableValues != null)
+{
+    <SimpleTable TableValues="@simpleTableValues" SpanWidth="8" FormSize="@AntSizeLDSType.Default" />
+} 

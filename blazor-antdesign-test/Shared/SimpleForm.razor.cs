@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using blazor_antdesign_test.Data;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace blazor_antdesign_test.Shared
 {
@@ -15,6 +16,8 @@ namespace blazor_antdesign_test.Shared
 
         private readonly SimpleFormModel formModel = new();
 
+        private Dictionary<string, string> simpleTableValues = null;
+
         // Rules ----------------------------------------------------------------
         private readonly FormValidationRule[] machineNrRules = new FormValidationRule[]
         {
@@ -23,12 +26,22 @@ namespace blazor_antdesign_test.Shared
         // ----------------------------------------------------------------------
 
         // Options --------------------------------------------------------------
-         private readonly List<string> userOptions = new()
+        private readonly List<string> userOptions = new()
         {
             "Placeholder 1",
             "Placeholder 2",
             "Placeholder 3"
-        };       
-        // ----------------------------------------------------------------------        
+        };
+        // ----------------------------------------------------------------------
+
+        private void OnFinish(EditContext editContext)
+        {
+            simpleTableValues = new()
+            {
+                ["Machine"] = formModel.MachineNr,
+                ["Name"] = formModel.Name,
+                ["User"] = formModel.User
+            };
+        }
     }
 }
