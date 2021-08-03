@@ -1,0 +1,18 @@
+﻿<style>
+    #divider {
+        margin-top: @DividerTopMargin;
+    }
+</style>
+
+<Divider id="divider" Orientation="left">Show Data</Divider>
+
+<Row>
+    <AntDesign.Col Span="@SpanWidth">
+        <Descriptions Bordered Size="@FormSize" class="desc">
+            @foreach (var pair in TableValues)
+            {
+                <DescriptionsItem Title="@pair.Key" Span="3">@pair.Value</DescriptionsItem>
+            }
+        </Descriptions>
+    </AntDesign.Col>
+</Row>
