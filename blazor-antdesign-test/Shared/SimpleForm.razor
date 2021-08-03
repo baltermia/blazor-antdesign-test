@@ -20,7 +20,7 @@
       OnFinish="OnFinish">
 
     <FormItem Label="Machine" Rules="@(machineNrRules)">
-        <Input @bind-Value="@context.MachineNr" />
+        <Input @bind-Value="@context.MachineNr" AllowClear="true" />
     </FormItem>
 
     <FormItem Label="Name">
@@ -40,5 +40,5 @@
 
 @if (simpleTableValues != null)
 {
-    <SimpleTable TableValues="@simpleTableValues" SpanWidth="8" FormSize="@AntSizeLDSType.Default" />
-} 
+    <SimpleTable TableValues="@simpleTableValues" SpanWidth="8" FormSize="@AntSizeLDSType.Small" />
+}
