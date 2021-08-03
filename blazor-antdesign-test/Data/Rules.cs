@@ -4,6 +4,6 @@ namespace blazor_antdesign_test.Shared
 {
     public class Rules
     {
-        public static Regex MachineRegex = new(@"^([A-Z]\d{4}[A-Z]\d{4})$");
+        public static readonly Regex MachineRegex = new(@"^([A-Za-z]\d{4}[A-Za-z]\d{4})$");
     }
 }
