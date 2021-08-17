@@ -29,13 +29,20 @@
 
 <div class="parent bottom-box-shadow">
     <Menu Mode="MenuMode.Horizontal"
-          DefaultOpenKeys=@(new [] {"main"})
           DefaultSelectedKeys=@(new [] {"main"})
+          DefaultOpenKeys=@(new [] {"main"})
           class="menu">
 
         <MenuItem Key="main">
             <NavLink href="">
                 <h1 id="title">Placeholder</h1>
+            </NavLink>
+        </MenuItem>
+
+        <MenuItem Key="cam">
+            <NavLink href="camera">
+                <Icon Type="video-camera" Theme="outline" />
+                Camera
             </NavLink>
         </MenuItem>
 
