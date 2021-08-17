@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace blazor_antdesign_test.Data
+namespace blazor_antdesign_test.Models
 {
     public class SimpleFormModel
     {
