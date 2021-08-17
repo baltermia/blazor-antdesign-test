@@ -26,7 +26,10 @@ namespace blazor_antdesign_test
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddServerSideBlazor();
+            services.AddServerSideBlazor().AddHubOptions((o) =>
+            {
+                o.MaximumReceiveMessageSize = long.MaxValue;
+            });
             services.AddAntDesign();
         }
 
