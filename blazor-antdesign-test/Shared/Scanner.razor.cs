@@ -9,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System;
 using speyck.BarcodeReader;
+using blazor_antdesign_test.Data;
 
 namespace blazor_antdesign_test.Shared
 {
@@ -31,6 +32,7 @@ namespace blazor_antdesign_test.Shared
 
         [Inject]
         private IJSRuntime JSRuntime { get; set; }
+        private Global Global { get; set; }
         private VideoMedia CameraControl { get; set; }
         private IEnumerable<MediaDeviceInfo> Cameras { get; set; } = Enumerable.Empty<MediaDeviceInfo>();
         private BlazorMediaAPI MediaAPI { get; set; }
@@ -41,6 +43,7 @@ namespace blazor_antdesign_test.Shared
         protected override async void OnInitialized()
         {
             MediaAPI = new BlazorMediaAPI(JSRuntime);
+            Global = new Global(JSRuntime);
             Reader.DetectedBarcode += BarcodeDetected_Handler;
 
             await base.OnInitializedAsync();
@@ -81,12 +84,12 @@ namespace blazor_antdesign_test.Shared
 
         public async void BarcodeDetected_Handler(object sender, BarcodeEventArgs e)
         {
-            await JSRuntime.InvokeVoidAsync("alert", "Barcode found with Value: " + e.Value);
+            await Global.Alert("Barcode found with Value: " + e.Value);
         }
 
         private async void OnError(MediaError error)
         {
-            await JSRuntime.InvokeVoidAsync("alert", error.Message);
+            await Global.Alert(error.Message);
         }
 
         private async Task FetchCamerasAsync()
