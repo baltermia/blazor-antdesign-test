@@ -7,6 +7,9 @@
 
   <ItemGroup>
     <PackageReference Include="AntDesign" Version="0.9.0" />
+    <PackageReference Include="BlazorMedia" Version="0.4.0.2" />
+    <PackageReference Include="PrettyBlazor" Version="1.2.0" />
+    <PackageReference Include="speyck.BarcodeReader" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
