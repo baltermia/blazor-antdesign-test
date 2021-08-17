@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 using System;
+using speyck.BarcodeReader;
 
 namespace blazor_antdesign_test.Shared
 {
@@ -25,6 +26,9 @@ namespace blazor_antdesign_test.Shared
         [Parameter]
         public string SelectedCamera { get; set; } = string.Empty;
 
+        [Parameter]
+        public BarcodeReader Reader { get; set; } = new();
+
         [Inject]
         private IJSRuntime JSRuntime { get; set; }
         private VideoMedia CameraControl { get; set; }
@@ -37,6 +41,7 @@ namespace blazor_antdesign_test.Shared
         protected override async void OnInitialized()
         {
             MediaAPI = new BlazorMediaAPI(JSRuntime);
+            Reader.DetectedBarcode += BarcodeDetected_Handler;
 
             await base.OnInitializedAsync();
         }
@@ -50,6 +55,33 @@ namespace blazor_antdesign_test.Shared
             }
 
             await base.OnAfterRenderAsync(firstRender);
+        }
+
+        private async void OnData()
+        {
+            Image img = null;
+
+            // Get the base64 code of the current image
+            string data = await CameraControl.CaptureImageAsync();
+
+            // Remove the first 22 characters ('data:image/png;base64,')
+            data = data.Remove(0, 22);
+
+            // Convert the valid image string to a byte[]
+            byte[] dataArr = Convert.FromBase64String(data);
+
+            // Convert the byte[] to a System.Drawing.Image using a MemoryStream
+            using (MemoryStream ms = new(dataArr))
+            {
+                img = Image.FromStream(ms);
+            }
+
+            Reader.Decode(new Bitmap(img));
+        }
+
+        public async void BarcodeDetected_Handler(object sender, BarcodeEventArgs e)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Barcode found with Value: " + e.Value);
         }
 
         private async void OnError(MediaError error)
