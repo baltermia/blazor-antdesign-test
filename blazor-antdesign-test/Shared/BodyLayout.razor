@@ -15,6 +15,10 @@
         bottom: 48px;
     }
 
+    .hide-overflow {
+        overflow: hidden;
+    }
+
     .box-shadow {
         box-shadow: 0 0 15px #dadada;
         -webkit-box-shadow: 0 0 15px #dadada;
@@ -23,7 +27,9 @@
 
 <Layout class="layout">
     <Content class="content-background box-shadow" id="content">
-        @ChildContent
+        <div class="hide-overflow">
+            @ChildContent
+        </div>
     </Content>
 </Layout>
 
