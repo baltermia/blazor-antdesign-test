@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace blazor_antdesign_test.Shared
+namespace blazor_antdesign_test.Data
 {
     public class Rules
     {
