@@ -1,0 +1,24 @@
+﻿<style>
+    #divider {
+        margin-top: @DividerTopMargin;
+    }
+
+    .stream {
+        width: @Width;
+        height: @Height;
+    }
+</style>
+
+<Divider id="divider" Orientation="left">Scanner</Divider>
+
+<Condition Evaluation="ShowCamera">
+    <Match>
+        <VideoMedia @ref="CameraControl"
+                    OnError="OnError"
+                    Width="ResWidth"
+                    Height="ResHeight"
+                    RecordAudio="false"
+                    CameraDeviceId="@SelectedCamera"
+                    Class="stream" />
+    </Match>
+</Condition>
